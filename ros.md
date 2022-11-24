@@ -202,21 +202,90 @@ $ rosrun [package_name] [node_name] __name:=<your name>
 
 ## What is ROS topics
 
-### Setup
+### Setup--for this tutorial
 
 + **roscore**
 
-  
+  Make sure that we have a roscore running
 
 + **turtlesim**
 
-  
+  ```shell
+  $ rosrun turtelsim turtlesim_node
+  ```
 
 + **turtle keyboard teleoperation**
 
-  
+  ```shell
+  $ rosrun turtlesim turtle_teleop_key
+  ```
 
 ### ROS Topic
 
+Two nodes are communicating with each other over a ROS Topic, while one publish a topic, while another subscribe the same topic. Using rqt_graph which shows the nodes and the topics currently running.
+
+#### Using rqt_graph
+
+It will show you a communication of two nodes in a graph
+
+![rqt_graph](/run/user/1000/doc/1790e0ad/rqt_graph_turtle_key.png)
+
+#### Introducing rostopic
+
+The **rostopic tool** allow us to get information about ROS **topics**
+
+We can use the help option to get aviable sub-commands for the rostopic :
+
+```shell
+$rostopic -h
+	rostopic bw    # display bandwidth used  by topic
+	rostopic delay # display delay of the topic from timestamp in header
+	rostopic echo  # print messages to srceen
+	rostopic hz    # display publishing rate of topic
+	rostopic find  # find topics by type
+	rostopic info  # print information about active topic
+	rostopic list  # list active topics
+	rostopic pub   # publish data to topic
+	rostopic type  # print topic or field type
+```
+
+#### Using rostopic echo
+
+#### Using rostopic list
+
+### ROS Message
+
+Communication on topics happensby sending ROS messages between nodes. 
+
+The publisher and subsriber must send and receive the same type of message. 
+
+We can use **rostopic type command** to see what type should we use.
+
+#### Using rostopic type
+
++ **rosmsg** : show the details of the message 
+
+## Understanding ROS Services and Parameters
+
+### ROS Services
+
+Services are another way that nodes can communicate with each other
 
 
+
+### Using rosservice
+
+
+
+### Using rosparam
+
+## ROS Packages structure
+
++ include/package_name : C++ include headers
++ msg : contain message types
++ src/package_name : source files 
++ srv : contain service types
++ scripts : executable scripts
++ CMakeLists.txt : CMake build file
++ package.xml : Package 
++ CHANGELOG.rst

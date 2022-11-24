@@ -1,0 +1,22 @@
+# Swarms of micro flying robots in the filed
+
+perception localization control
+
+navigation and coordination
+
+aerial robots , agile multicopter 
+
+single-drone navigation : agile multicopter control system
+
+visual-intertial odometry
+
+## four aspects
+
+TEEM : 
+
++ trajectory optimality
++ extensibility
++ economical computing
++ miniature size
+
+trajectory planning
