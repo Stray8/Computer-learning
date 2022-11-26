@@ -4,6 +4,20 @@
 
 polynomial 多项式
 
+numerical optimization 数值优化
+
+allocate 分配
+
+resort to 采取
+
+restore to 恢复到
+
+capable 可行的 incapable 无法
+
+simultaneous 同时
+
+agile and maneuverable 敏捷与可操控性
+
 continuous-time
 
 discrete-time
@@ -31,11 +45,15 @@ system dynamics and input boundaries 系统动力学和输入边界
 cost function 成本函数
 complementary progress constraint 互补进度约束
 
-intuitively 凭直觉的
+intuitively 直观地讲
 
 restricted to 受限于
 
 maneuver 机动
+
+specify 指定
+
+aforementioned 前述的
 
 whereas 而
 
@@ -55,10 +73,20 @@ interception 拦截
 
 methodogy 方法论
 
-### Two approach for planning quadrotor trajectories
+### planning time-optimal trajectories methods
 
-+ widely used polynomial formulation exploiting the quadrotor's differentially-flat output states with high computational efficiency
-+ 
++ Early works : **Using polynomial trajectory formulations**
++ Recently works : **Using numerical optimization , but require waypoints to be allocated as cost or constraints at specific discrete times ** 
++ This article propose : **propose a solution to the time allocation problem, by introducing a formulation of progress along the trajectory, which enable the simultaneous optimization of the time-allocation and the trajectory  **
 
+### Two common approaches
 
++ continuous-time polynomials 
+  + week-point :  These polynomials are inherently smooth and therefore cannot represent rapid state or input changes at reasonable order, They cannot exploit the full actuator potential
++ discrete-time state space representations
+  + methods : 
+    + search and sampling-based methods 
+    + optimization-based methods
+  + shortcoming :  when faced the multiple waypoints, the time spent between any two waypoints is unknown, so this is ineffective for time-optimal trajectory generation through multiple waypoints
++ This paper's approach : formulate a progress measure for each waypoint along the trajectory. And introduce a (Complementary Progress Constraint)CPC, this allows completion only in proximity to a waypoint.
 
