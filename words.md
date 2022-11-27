@@ -55,6 +55,12 @@ specify 指定
 
 aforementioned 前述的
 
+traverse-dynamics 横向动力学
+
+arc length 弧长
+
+reference 参考
+
 whereas 而
 
 saturation  饱和
@@ -65,6 +71,8 @@ euler angle 欧拉角
 
 refine 完善
 
+feasible 可行的
+
 take inspiration from 从...中获取灵感
 
 non-convex 非凸 non-convexity 非凸性
@@ -72,6 +80,20 @@ non-convex 非凸 non-convexity 非凸性
 interception 拦截
 
 methodogy 方法论
+
+respectively 分别
+
+complement 补充 implement 实施
+
+loss of generality 丧失一般性
+
+fixed 固定的
+
+coincide with  与...一致
+
+decompose into 分解为
+
+torque 扭矩
 
 ### planning time-optimal trajectories methods
 
@@ -90,3 +112,79 @@ methodogy 方法论
   + shortcoming :  when faced the multiple waypoints, the time spent between any two waypoints is unknown, so this is ineffective for time-optimal trajectory generation through multiple waypoints
 + This paper's approach : formulate a progress measure for each waypoint along the trajectory. And introduce a (Complementary Progress Constraint)CPC, this allows completion only in proximity to a waypoint.
 
+  They formulate two factors which must complement each other
+
+  + One factor : **the completion of a waypoint**
+  + Another factor : **local proximity to a waypoint**
+
+
+### methodology
+
++ **General trajectory Optimization**
+  $$
+  x^*=arg minL(x)
+  $$
+
+  $$
+  subject\ to: g(x)=0\ and\ h(x) \leq 0
+  $$
+
+  + Multiple Shooting Method : 多重射击法
+
+    Represent a dynamic system in the state space
+
+    + system state(node) : x<sub>k</sub> 
+    
+    + actuation input : u<sub>k</sub>  
+    
+    + system evolution 
+      $$
+      \dot x = f_{dyn}(x,u)
+      $$
+    
+      $$
+      x_{k+1}-x_k-dt*f_{RK4}(x_k,u_k)=0
+      $$
+
++ **Time-Optimal Trajectory Optimization**
+
+  Optimizing for a time-optimal trajectory : **The only cost term** : overall trajectory time 
+  $$
+  L(x)=t_N
+  $$
+  
+
+  + Passing Waypoints through Optimization
+
+  + Progress Measure Variables
+
+    To describe the progress throughout a track a measure that satisfy three requirements:
+
+    + Start at a defined value
+    + Reach a different value by the end of the trajectory
+    + Only change when a waypoint is passed within a certain tolerance
+
+  + Complementary Progress Constraints
+
+  + Tolerance Relaxation
+
+    Why this tolerance should be admitted?
+
+    + It's impractical to force trajectory to pass exactly through a waypoint
+    + negatively impacts the convergence behavior and time-optimality
+
+    
+
+  + Optimization Problem Summary
+
+    
+
+  + Quadrotor Dynamics
+
+  
+
+  
+
+  
+
+  

@@ -1,8 +1,67 @@
 # ROS
 
-## Installition
+## Installation
 
+## mavros installation
 
+Source installation : Use wstool for retrieving sources and catkin for build
+
++ Prestep : 
+
+  ```shell
+  # for ROS kinetic release
+  $ sudo apt-get install python-catkin-tools python-rosinstall-generator -y
+  # for ROS Noetic release
+  $ sudo apt-get install python3-catkin-tools py3thon-rosinstall-generator -y
+  ```
+
++ Step1 : Create the workspace
+
+  ```shell
+  $ mkdir -p ~/catkin_ws/src # If you already have a workspace, skipe it
+  $ ca ~/catkin_ws
+  $ catkin init
+  $ wstool init src
+  ```
+
++ Step2 : Install MavLink
+
+  ```shell
+  $ rosinstall_generator --rosdistro <ROS distros> mavlink | tee /tmp/mavros.rosinstall
+  # <ROS distros> : choice your own ROS distros
+  ```
+
++ Step3 : Install MAVROS
+
+  ```shell
+  $ rosinstall_generator --upstream mavros | tee -a /tmp/mavros.rosinstall
+  ```
+
++ Step4 : Create workspace & deps
+
+  ```shell
+  $ wstool merge -t src /tmp/mavros.rosinstall
+  $ wstool update -t src -j4
+  $ rosdep install --from-paths src --ignore-src -y
+  ```
+
++ Step5 : Install GeographicLib datasets
+
+  ```shell
+  $ ./src/mavros/scripts/install_geographiclib_datasets.sh
+  ```
+
++ Step6 : Build source
+
+  ```shell
+  $ catkin build
+  ```
+
++ Step7 : Make sure that you use setup.bash or setup.zsh from workspace
+
+  ```shell
+  source devel/setup.bash
+  ```
 
 ## Navigating the Ros Filesystem
 
@@ -136,6 +195,7 @@ As longas all of the system dependencies of your package are installed, we can n
 
     ```shell
     $ catkin_make
+    catkin_make [make_targets] [-DCMAKE]
     ```
 
 + Building your package
@@ -275,9 +335,60 @@ Services are another way that nodes can communicate with each other
 
 ### Using rosservice
 
-
-
 ### Using rosparam
+
+### Using roslaunch
+
+roslaunch starts nodes as defined in a launch file
+
+Usage :
+
+```shell
+$ roslaunch [package] [filename.launch]
+```
+
++ First : go to the package we created and built early
+
+  ```shell
+  $ roscd [package_name]
+  # if roscd has an error 
+  # roscd: No such package/stack 'foobar', 
+  # you need to source the environment setup file
+  $ cd ~/catkin_ws
+  $ source devel/setup.bash
+  ```
+
++ Then : make a launch directory and a launch file
+
++ End : launch your package
+
+### Using rosed
+
+rosed allows you to directly edit a file within a package by using package name rather than typing the entire path to the package
+
+```shell
+$ rosed [package_name] [filename]
+```
+
+## Introducing to msg and srv
+
++ **msg** : msg files are simple text files that describe the fields of a ROS message. They are used to generator source code for messages in different languages. 
++ **srv** :an src file describes a service. Composed of a request and a response.
+
+### Using msg
+
+#### Creating a msg
+
+```shell
+```
+
+
+
+### Using srv
+
+
+
+
 
 ## ROS Packages structure
 
@@ -289,3 +400,13 @@ Services are another way that nodes can communicate with each other
 + CMakeLists.txt : CMake build file
 + package.xml : Package 
 + CHANGELOG.rst
+
+
+
+## Issue
+
++ when open a new terminal, we need to type the command 
+
+  `source ~/catkin/devel/setup.bash`,
+
+  to step this, we can add this command to the ~/.bashrc , so that we can rospack find our package without type command 
