@@ -95,6 +95,16 @@ decompose into 分解为
 
 torque 扭矩
 
+lap 一圈
+
+substantial 重大的
+
+ramp up 上升
+
+thrust-to-weight ratio(TWR) 推力比
+
+
+
 ### planning time-optimal trajectories methods
 
 + Early works : **Using polynomial trajectory formulations**
@@ -152,7 +162,7 @@ torque 扭矩
   $$
   L(x)=t_N
   $$
-  
+
 
   + Passing Waypoints through Optimization
 
@@ -183,8 +193,20 @@ torque 扭矩
 
   
 
-  
 
-  
 
-  
+
+
+### Discussion
+
+#### Velocity and Acceleration Distribution
+
++ Velocity : The velocity distribution is rather similar for the human and time-optimal
++ Acceleration ： The human varies considerably more
+
+#### Tracking errors
+
++ didn't account for any latency correction of the whole pipeline
++ In high speed , the aerodynamics model would be inaccurate 
++ The flight control Betaflight has more reliable system to human than time-optimal and the control strategies are not translate to accurate closed-loop control or desirable control-loop shaping
+
