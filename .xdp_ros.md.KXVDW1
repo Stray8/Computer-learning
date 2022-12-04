@@ -18,8 +18,6 @@ $ wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/in
 $ sudo bash ./install_geographiclib_datasets.sh   
 ```
 
-## ROS Python Style
-
 ## ROS C++ Style
 
 ### Naming Schemes
@@ -39,17 +37,13 @@ ROS topics and service names are **under_scored**
 
 #### Files
 
-The file names should be descriptive 
-
-if a file primarily implements a class, name the file after class
+The file names should be descriptive and if a file primmmmmmmmmmmm
 
 All files are **under_scored**
 
 Source files use **.cpp**
 
 Header files use **.h**
-
-Libraries, being files are **under_scored**
 
 ```c++
 // 系统自带的头文件
@@ -60,53 +54,7 @@ Libraries, being files are **under_scored**
 
 #### Classes/Types
 
-Class names are CamelCased
 
-**Name the class after what it is**
-
-**Compound names of over three words are a clue that your design may be a unnecessarily confusing **
-
-```c++
-class ExampleClass;
-class HoKuURGLaser;
-```
-
-#### function/Methods
-
-function and class method names are camelCased and the arguments are under_scored
-
-```c++
-int exampleMethod(int example_arg);
-```
-
-#### Variables
-
-+ variable names are **under_scored**
-+ **Constants** are ALL_CAPITALS
-
-**Member variables** 
-
-variables that are members of a class are **under_scored** with a trailing underscore added
-
-```c++
-int example_int_;
-```
-
-**Global variables**
-
-global variables are **under_scored** with a leading g_ added
-
-```c++
-int g_shutdown;
-```
-
-#### Namespaces
-
-Namespace names are **under_scored**
-
-#### License statements
-
-Every source and header file must contain a license and copyright statement at the beginning of the file
 
 ## Navigating the Ros FileSystem
 
