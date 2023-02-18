@@ -116,15 +116,15 @@ Every source and header file must contain a license and copyright statement at t
 
 ### USing roscd
 
-change a directory directly to a package
++ change a directory directly to a package
 
 ### roscd log
 
-take you to the folder where ROS stores log files
++ take you to the folder where ROS stores log files
 
 ### USing rosls
 
-ls directly in a package by name rather than by absolute path
++ ls directly in a package by name rather than by absolute path
 
 ## Creating a ROS package
 
